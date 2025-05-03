@@ -1,9 +1,11 @@
 package tn.esprit.exam_spring_tv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,6 +22,7 @@ public class Chaine {
 
     private Thematique chTheme;
     @ManyToMany
-    private HashSet<Programme> chProgrammes;
+    @JsonIgnore
+    private Set<Programme> chProgrammes;
 
 }

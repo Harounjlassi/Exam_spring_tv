@@ -1,9 +1,11 @@
 package tn.esprit.exam_spring_tv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -19,9 +21,11 @@ public class Programme {
 
     @ManyToMany(mappedBy = "programmes", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @ToString.Exclude
-    private HashSet<Utilisateur> utilisateurs = new HashSet<>();
+    @JsonIgnore
+    private Set<Utilisateur> utilisateurs = new HashSet<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
     @ToString.Exclude
+    @JsonIgnore
     private Chaine chaine;
 }
